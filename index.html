@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #555;
+            --bg-color: #fff;
+            --accent-color: #f4f4f4;
+            --card-bg-color: #fafafa;
+            --border-color: #e0e0e0;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 2rem;
+            background-color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .image-container {
+            display: flex;
+            align-items: center;
+        }
+
+        header .image-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: left;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero .profile-image-container {
+            margin-right: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero .profile-image-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 1rem 0 2rem;
+        }
+
+        .hero button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: var(--secondary-color);
+        }
+        .divider {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        .about {
+            margin-bottom: 3rem;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .experience, .work {
+            margin-bottom: 3rem;
+        }
+
+        .experience h2, .work h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .experience .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience .card {
+            background-color: var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .experience .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience .card p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        .work h2 {
+            text-align: center;
+        }
+
+        .work {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .work .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .work .card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .work img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .work .card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .work .card p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .experience {
+                gap: 1.5rem;
+            }
+
+            .work .cards-container {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="image-container">
+            <a href="#main">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experiences</a></li>
+                <li><a href="#work">My Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="main" class="hero">
+            <div class="profile-image-container">
+                <img src="images/IMG20220323170604.jpg" alt="Profile Picture">
+            </div>
+            <div>
+                <h1>Hello! I am Sebastian Carl Gomez.</h1>
+                <p>Explore my work, skills, and experiences. Feel free to reach out for collaboration opportunities!</p>
+                <button onclick="redirectToFacebook()">Message me</button>
+            </div>
+        </section>
+    
+        <hr class="divider">
+    
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>I am a passionate developer and designer with a keen eye for detail and a strong dedication to delivering high-quality work. With experience in .NET development and UI/UX design, I aim to create solutions that are both functional and visually appealing. When I’m not coding or designing, I enjoy exploring new technologies and expanding my knowledge in the ever-evolving world of tech.</p>
+        </section>
+    
+        <hr class="divider">
+    
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Junior Developer</h3>
+                    <p>I am a Junior .NET and Web Developer skilled in building and maintaining web and software applications using .NET technologies, and web development tools like HTML, CSS, and JavaScript, with a strong focus on learning and growing my expertise.</p>
+                </div>
+                <div class="card">
+                    <h3>UI/UX Designer</h3>
+                    <p>Designed user-friendly interfaces and optimized user experiences.</p>
+                </div>
+            </div>
+        </section>
+    
+        <hr class="divider">
+    
+        <section id="work" class="work">
+            <h2>My Work</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="images/Screenshot 2024-12-14 141713.png" alt="Project 1">
+                    <h3>.NET Project</h3>
+                    <p>A .NET project for registering and records licenses and vehicles.</p>
+                </div>
+                <div class="card">
+                    <img src="images/figma.png" alt="Project 2">
+                    <h3>Figma Prototype</h3>
+                    <p>A mobile app to track student's activities, similar to google classroom.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SEB. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function redirectToFacebook() {
+            window.location.href = "https://www.facebook.com/dek_matsuu";
+        }
+    </script>
+</body>
+
+</html>
